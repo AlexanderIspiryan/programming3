@@ -1,7 +1,6 @@
 var LiveForm = require("./LiveForm");
 var random = require("./random");
-var Weather = require("./Weather");
-Weather();
+
 
 module.exports = class Grass extends LiveForm {
     constructor(x, y) {
@@ -29,16 +28,16 @@ module.exports = class Grass extends LiveForm {
         this.multiply++;
         let emptyCells = this.chooseCell(0);
         let newCell = random(emptyCells);
-        if(exanak == "spring"){
+        if(weather == "spring"){
          a = 4;
         }
-        else if(exanak == "summer"){
+        else if(weather == "summer"){
          a = 6;
         }
-        else if(exanak == "outhemn"){
+        else if(weather == "outhemn"){
         a = 8;
         }
-        else if(exanak == "winther"){
+        else if(weather == "winther"){
          a = 10;
         }
             if (newCell && this.multiply >= a) {

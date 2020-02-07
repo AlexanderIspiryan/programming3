@@ -1,7 +1,5 @@
 var LiveForm = require("./LiveForm");
 var random = require("./random.js");
-var Weather = require("./Weather");
-Weather();
 
 
 module.exports = class Antivirus extends LiveForm {
@@ -61,16 +59,16 @@ eat() {
              this.x = x;
             this.y = y;
             let a;
-            if(exanak =="spring"){
+            if(weather =="spring"){
                 a = 4
             }
-            else if(exanak == "summer"){
+            else if(weather == "summer"){
                 a = 6
             }
-            else if(exanak == "outhemn"){
+            else if(weather == "outhemn"){
                 a = 8
             }
-            else if(exanak == "winther"){
+            else if(weather== "winther"){
                 a = 10
             }
             if (this.life >= a) {

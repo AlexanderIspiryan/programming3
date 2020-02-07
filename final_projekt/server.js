@@ -8,7 +8,7 @@ var Antivirus = require("./modules/Antivirus.js");
 var Fire = require("./modules/Fire.js");
 var Water = require("./modules/Water.js");
 let random = require('./modules/random');
-var exanak = require("./modules/Weather");
+
 //! Requiring modules  --  END
 
 
@@ -22,6 +22,8 @@ fireArr = [];
 waterArr = [];
 matrix = [];
 grassHashiv = 0;
+weather = "";
+counther = 0;
 
 
 
@@ -89,7 +91,7 @@ app.use(express.static("."));
 app.get('/', function (req, res) {
     res.redirect('index.html');
 });
-server.listen(3001);
+server.listen(3000);
 //! SERVER STUFF END  --  END
 
 
@@ -132,6 +134,24 @@ function creatingObjects() {
 creatingObjects();
 
 function game() {
+    counther++;
+    if(counther >= 0 && counther <= 20){
+        weather = "spring";
+        
+    }
+    else if(counther >= 20 && counther <=40){
+        weather = "summer";
+    }
+    else if(counther >= 40 && counther <=60){
+        weather = "outhemn"
+    }
+    else if(counther >=60 && counther <=80){
+        weather = "winther"
+    }
+    else{
+        counther = 0;
+    }
+    console.log(weather);
     
     
     
@@ -174,7 +194,8 @@ function game() {
     //! Object to send
     let sendData = {
         matrix: matrix,
-        grassCounter: grassHashiv
+        grassCounter: grassHashiv,
+        weather: weather
     }
 
     //! Send data over the socket to clients who listens "data"
@@ -185,4 +206,3 @@ function game() {
 
 
 setInterval(game, 1000)
-setInterval(exanak,10000)

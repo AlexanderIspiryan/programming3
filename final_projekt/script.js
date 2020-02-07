@@ -16,6 +16,7 @@ function setup() {
     let antivirusCountElement = document.getElementById('antivirusCount');
     let fireCountElement = document.getElementById('fireCount');
     let waterCountElement = document.getElementById('waterCount');
+    let weather = document.getElementById('weather')
 
 
     //! adding socket listener on "data" <-- name, after that fire 'drawCreatures' function 
@@ -23,26 +24,12 @@ function setup() {
     socket.on("data", drawCreatures);
 
     function drawCreatures(data) {
-        function weather(){
-            calc = Math.floor((Math.random() * 4000) +1);
-        if(calc >= 3000){
-            exanak = "spring"
-        }
-        else if(calc >=2000 && calc <=3000){
-            exanak = "summer"
-        }
-        else if(calc >= 1000 && calc <=2000){
-            exanak = "outhemn"
-        }
-        else if(calc >=0 && calc <= 1000){
-            exanak = "winther"
-        }
-        console.log(exanak);
+        console.log(data.weather);
         
-        }
         //! after getting data pass it to matrix variable
         matrix = data.matrix;
         grassCountElement.innerText = data.grassCounter;
+        weather.innerText = data.weather;
         //grassEaterCountElement.innerText = data.grassCounter;//s
         //predatorCountElement.innerText = data.predatorCounter;//S
         //! Every time it creates new Canvas woth new matrix size
@@ -50,33 +37,81 @@ function setup() {
         //! clearing background by setting it to new grey color
         background('#acacac');
         //! Draw grassCount and grassEaterCount to HTML (use DOM objects to update information, yes, and use .innerText <- function)
-            weather();
         //! Drawing and coloring RECTs
         for (var i = 0; i < matrix.length; i++) {
             for (var j = 0; j < matrix[i].length; j++) {
                
                 if (matrix[i][j] == 1) {
-                     if(exanak == "spring"){
-                    fill("orange");
-                    rect(j * side, i * side, side, side);
+                     if(data.weather == "spring"){
+                    fill("#03fc13");
                 }
-                else{
-                    fill("green"); 
+                else if(data.weather == "summer"){
+                    fill("#3dfc49"); 
+                }
+                else if(data.weather == "outhemn"){
+                    fill("#54a158");
+                }       
+                else if(data.weather == "winther"){
+                    fill("#8fe394");
+                }
                     rect(j * side, i * side, side, side); 
                 }
-                      
-                    
-                } else if (matrix[i][j] == 2) {
-                    fill("yellow");
+                
+                else if (matrix[i][j] == 2) {
+                    if(data.weather == "spring"){
+                        fill("#fbff00");
+                    }
+                    else if(data.weather == "summer"){
+                        fill("#fafc6f"); 
+                    }
+                    else if(data.weather == "outhemn"){
+                        fill("#b6b82a");
+                    }       
+                    else if(data.weather == "winther"){
+                        fill("#f6f781");
+                    }
                     rect(j * side, i * side, side, side);
                 } else if (matrix[i][j] == 3) {
-                    fill('brown');
+                    if(data.weather == "spring"){
+                        fill("#dd00ff");
+                    }
+                    else if(data.weather == "summer"){
+                        fill("#e36cf5"); 
+                    }
+                    else if(data.weather == "outhemn"){
+                        fill("#7e348a");
+                    }       
+                    else if(data.weather == "winther"){
+                        fill("#e198ed");
+                    }
                     rect(j * side, i * side, side, side);
                 }  else if (matrix[i][j] == 4) {
-                    fill('pink');
+                    if(data.weather == "spring"){
+                        fill("#01061f");
+                    }
+                    else if(data.weather == "summer"){
+                        fill("#2a2c36"); 
+                    }
+                    else if(data.weather == "outhemn"){
+                        fill("#101117");
+                    }       
+                    else if(data.weather == "winther"){
+                        fill("#393a40");
+                    }
                     rect(j * side, i * side, side, side);
                 } else if (matrix[i][j] == 5) {
-                    fill('purple');
+                    if(data.weather == "spring"){
+                        fill("#00fff2");
+                    }
+                    else if(data.weather == "summer"){
+                        fill("#81fcf6"); 
+                    }
+                    else if(data.weather == "outhemn"){
+                        fill("#3d8581");
+                    }       
+                    else if(data.weather == "winther"){
+                        fill("#a0faf5");
+                    }
                     rect(j * side, i * side, side, side);
                 }else if (matrix[i][j] == 6) {
                     fill('red');
@@ -92,4 +127,3 @@ function setup() {
         }
     }
 }
-setInterval(weather(),1000);

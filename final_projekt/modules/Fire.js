@@ -1,7 +1,6 @@
 var LiveForm = require("./LiveForm");
 var random = require("./random.js");
-var Weather = require("./Weather");
-Weather();
+
 
 
 
@@ -32,19 +31,19 @@ module.exports = class Fire extends LiveForm {
         this.multiply++;
         let emptyCells = this.chooseCell(0);
         let newCell = random(emptyCells);
-        if(exanak == "spring"){
+        if(weather == "spring"){
          a = 6;
 
         }
-        else if(exanak == "summer"){
+        else if(weather == "summer"){
          a = 8;
 
         }
-        else if(exanak == "outhemn"){
+        else if(weather == "outhemn"){
         a = 12;
 
         }
-        else if(exanak == "winther"){
+        else if(weather == "winther"){
          a = 13;   
 
         }
