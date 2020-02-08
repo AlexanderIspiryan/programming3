@@ -6,7 +6,7 @@ var random = require("./random.js");
 module.exports = class Virus extends LiveForm {
     constructor(x, y) {
         super(x, y);
-        this.life = 30;
+        this.life = 10;
     }
     getNewCoordinates() {
         this.directions = [
@@ -29,6 +29,7 @@ module.exports = class Virus extends LiveForm {
         let newCell = random(emptyCells);
 
         if (newCell) {
+            virusHashiv++;
             let x = newCell[0];
             let y = newCell[1];
             matrix[y][x] = 4;
@@ -64,37 +65,44 @@ module.exports = class Virus extends LiveForm {
             matrix[y][x] = 4;
             matrix[this.y][this.x] = 0;
 
-            for (let i in grassArr) {
+            if(weather == "spring" || weather == "winther"){
+                for (let i in grassArr) {
                 if (grassArr[i].x == x && grassArr[i].y == y) {
                     grassArr.splice(i, 1)
                 }
             }
-            for (let i in grassEaterArr) {
+
+            }
+            else if(weather == "summer"){
+                 for (let i in grassEaterArr) {
                 if (grassEaterArr[i].x == x && grassEaterArr[i].y == y) {
                     grassEaterArr.splice(i, 1)
                 }
             }
-            for (let i in predatorArr) {
+            }
+            else if (weather == "outhemn"){
+                for (let i in predatorArr) {
                 if (predatorArr[i].x == x && predatorArr[i].y == y) {
                     predatorArr.splice(i, 1)
                 }
             }
-            
+            }
+
             this.x = x;
             this.y = y;
             let b;
 
             if(weather == "spring"){
-                b = 5; 
+                b = 15; 
                }
                else if(weather == "summer"){
-                b = 7;
+                b = 20;
                }
                else if(weather == "outhemn"){
-               b = 8;
+               b = 26;
                }
                else if(weather == "winther"){
-                b = 13;   
+                b = 30;   
                }
             if (this.life >= b) {
                 this.mul();

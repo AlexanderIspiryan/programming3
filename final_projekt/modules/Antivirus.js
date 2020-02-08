@@ -29,12 +29,13 @@ module.exports = class Antivirus extends LiveForm {
         var newCell = random(emptyCells);
 
         if (newCell) {
+            antivirusHashiv++;
             var x = newCell[0];
             var y = newCell[1];
             matrix[y][x] = 5;
             var newantivirus = new Antivirus(x, y);
             antivirusArr.push(newantivirus)
-            this.life = 30;            
+            this.life = 15;            
         }
 
     }
@@ -70,6 +71,8 @@ eat() {
             }
             else if(weather== "winther"){
                 a = 10
+                console.log("grass");
+                
             }
             if (this.life >= a) {
                 this.mul();

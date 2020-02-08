@@ -27,7 +27,7 @@ module.exports = class Fire extends LiveForm {
     } 
     mul() {
         let a;
-        
+        fireHashiv++;
         this.multiply++;
         let emptyCells = this.chooseCell(0);
         let newCell = random(emptyCells);

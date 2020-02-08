@@ -27,7 +27,8 @@
 </head>
 
 <body>
-    <table class="table table-hover">
+   <section>
+        <table class="table table-hover">
         <thead>
             <tr>
                 <h1>Ծրագրավորում III Երևան</h1>
@@ -43,26 +44,82 @@
             </tr>
         </thead>
         <tbody>
-            <td id="weather"></td>
+            
             <tr>
                 <th scope="row">1</th>
-                <td scope="row" style="background-color:green;"></td>
-                <td>Կանաչը խոտն է, որը բազմանում է N ցիկլը մեկ,մահանում է երբ նրան ուտում է խոտակերը, կամ այրում է
-                    կրակը, կամ նրան կոխկրտում է գիշատիչը</td>
+                <td scope="row" style="background-color:#03fc13;"></td>
+                    <td>Կանաչը խոտն է, որը բազմանում է 2 / 4 / 6 / 10 ցիկլը մեկ,մահանում է երբ նրան ուտում է խոտակերը, կամ այրում է
+                    կրակը:</td>
+                
                 <td id="grassCount"></td>
             </tr>
             <tr>
                 <th scope="row">2</th>
-                <td scope="row" style="background-color:orange;"></td>
-                <td>Դեղինը խոտակերն է, որը բազմանում է N հատ խոտ ուտելուց հետո և մահանում է N հատ չուտելուց հետո, կամ
+                <td scope="row" style="background-color:#fbff00;"></td>
+                <td>Դեղինը խոտակերն է, որը բազմանում է 8 / 10 / 15 / 20 հատ խոտ ուտելուց հետո և մահանում է 15 հատ չուտելուց հետո, կամ
                     երբ նրան ուտում է գիշատիչը, կամ երբ նրան այրում է կրակը:</td>
                 <td id="grassEaterCount"></td>
             </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td scope="row" style="background-color:#dd00ff;"></td>
+                <td>Վարդագույնը գիշատիչն է, որը բազմանում է 7 / 8 / 14 / 20 հատ խոտակեր ուտելուց հետո և մահանում է 20 հատ չուտելուց հետո, կամ
+                    երբ նրան ուտում է վիրուսը, կամ երբ նրան այրում է կրակը:</td>
+                <td id="predatorCount"></td>
+            </tr>
+            <tr>
+                <th scope="row">4</th>
+                <td scope="row" style="background-color:#01061f;"></td>
+                <td>Սևը վիրուսն է, որը բազմանում է 15 / 20 / 26 / 30 հատ խոտ, խոտակեր, գիշատիչ ուտելուց հետո և մահանում է 20 հատ չուտելուց հետո, կամ
+                    երբ նրան ուտում է անտիվիրուսը, կամ երբ նրան այրում է կրակը:</td>
+                <td id="virusCount"></td>
+            </tr>
+            <tr>
+                <th scope="row">5</th>
+                <td scope="row" style="background-color:#1100ff"></td>
+                <td>Կապույտը անտիվիրուսն է, որը բազմանում է 4 / 6 / 8 / 10 հատ վիրուս ուտելուց հետո և մահանում է 15 հատ չուտելուց հետո, կամ երբ նրան
+                    այրում է կրակը:</td>
+                <td id="antivirusCount"></td>
+            </tr>
+            <tr>
+                <th scope="row">6</th>
+                <td scope="row" style="background-color:#ff0000"></td>
+                <td>Կարմիրը կրակն է, որը բազմանում է 6 / 8 / 12 / 13 ցիկլը մեկ,մահանում է երբ նրան ուտում է ջուրը։</td>
+                <td id="fireCount"></td>
+            </tr>
+            <tr>
+                <th scope="row">7</th>
+                <td scope="row" style="background-color:#00aeff"></td>
+                <td>երկնագույնը ջուրն է, որը բազմանում է 2 / 6 / 8 / 10 հատ կրակ ուտելուց հետո և մահանում է 25 հատ չուտելուց հետո:</td>
+                <td id="waterCount"></td>
+            </tr>
+        <tr>
+            <h1 id="weather"></h1>
+        </tr>
+            
         </tbody>
     </table>
+   </section>
+   <ul>
+       <li>
+           <span>Dark</span>
+           <span>Light</span>
+       </li>
+   </ul>
+   
     <script src="p5.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $("ul").click(function(){
+            $("ul").toggleClass("active")
+            $("section").toggleClass("dark")
+        })
+    })
+    </script>
     
 </body>
 

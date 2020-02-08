@@ -7,7 +7,7 @@ var random = require("./random.js");
 module.exports = class Predator extends LiveForm {
     constructor(x, y) {
         super(x, y);
-        this.energy = 40;
+        this.energy = 20;
     }
     getNewCoordinates() {
         this.directions = [
@@ -30,6 +30,7 @@ module.exports = class Predator extends LiveForm {
         let newCell = random(emptyCells);
 
         if (newCell) {
+            predatorHashiv++;
             let x = newCell[0];
             let y = newCell[1];
             matrix[y][x] = 3;
@@ -62,16 +63,16 @@ module.exports = class Predator extends LiveForm {
             let a;
 
             if(weather == "spring"){
-                a = 4; 
+                a = 7; 
                }
                else if(weather == "summer"){
-                a = 6;
+                a = 8;
                }
                else if(weather == "outhemn"){
-               a = 8;
+               a = 14;
                }
                else if(weather == "winther"){
-                a = 12;   
+                a = 20;   
                }
             if (this.multiply >= a) {
                 this.mul()

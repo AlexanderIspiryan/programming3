@@ -22,6 +22,13 @@ fireArr = [];
 waterArr = [];
 matrix = [];
 grassHashiv = 0;
+grassEaterHashiv = 0;
+predatorHashiv = 0;
+virusHashiv = 0;
+antivirusHashiv = 0;
+fireHashiv = 0;
+waterHashiv = 0;
+
 weather = "";
 counther = 0;
 
@@ -77,7 +84,7 @@ function matrixGenerator(matrixSize, grass, grassEater, predator,virus,antivirus
         matrix[customY][customX] = 7;
     }
 }
-matrixGenerator(30, 25, 10, 8, 6, 8, 15, 5);
+matrixGenerator(30, 25, 8, 6, 3, 8, 15, 3);
 //! Creating MATRIX -- END
 
 
@@ -101,27 +108,33 @@ function creatingObjects() {
         for (var x = 0; x < matrix[y].length; x++) {
             if (matrix[y][x] == 7) {
                 var water = new Water(x, y);
-                waterArr.push(water);           
+                waterArr.push(water);
+                waterHashiv++;           
             }
             else if (matrix[y][x] == 6) {
                 var fire = new Fire(x, y);
                 fireArr.push(fire);
+                fireHashiv++;
             }
             else if (matrix[y][x] == 5) {
                 var antivirus = new Antivirus(x, y);
                 antivirusArr.push(antivirus);
+                antivirusHashiv++;
             }
             else if (matrix[y][x] == 4) {
                 var virus = new Virus(x, y);
                 virusArr.push(virus);
+                virusHashiv++;
             }
             else if (matrix[y][x] == 3) {
                 var predator = new Predator(x, y);
                 predatorArr.push(predator);
+                predatorHashiv++;
             }
             else if (matrix[y][x] == 2) {
                 var grassEater = new GrassEater(x, y);
                 grassEaterArr.push(grassEater);
+                grassEaterHashiv++;
             }
             else if (matrix[y][x] == 1) {
                 var grass = new Grass(x, y);
@@ -195,6 +208,12 @@ function game() {
     let sendData = {
         matrix: matrix,
         grassCounter: grassHashiv,
+        grassEaterCounter: grassEaterHashiv,
+        predatorCounter: predatorHashiv,
+        virusCounter: virusHashiv,
+        antivirusCounter: antivirusHashiv,
+        fireCounter: virusHashiv,
+        waterCounter: waterHashiv,
         weather: weather
     }
 
@@ -205,4 +224,4 @@ function game() {
 
 
 
-setInterval(game, 1000)
+setInterval(game, 500)

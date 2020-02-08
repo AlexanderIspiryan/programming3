@@ -6,7 +6,7 @@ var random = require("./random.js");
 module.exports = class GrassEater extends LiveForm {
     constructor(x, y) {
         super(x, y);
-        this.life = 40;
+        this.life = 10;
         
     }
     getNewCoordinates() {
@@ -30,12 +30,13 @@ module.exports = class GrassEater extends LiveForm {
         let newCell = random(emptyCells);
 
         if (newCell) {
+            grassEaterHashiv++;
             let x = newCell[0];
             let y = newCell[1];
             matrix[y][x] = 2;
             let grassEater = new GrassEater(x, y);
             grassEaterArr.push(grassEater);
-            this.life = 5;
+            this.life = 15;
         }
     }
     eat() {
@@ -61,16 +62,16 @@ module.exports = class GrassEater extends LiveForm {
             let a;
 
             if(weather == "spring"){
-                a = 4; 
+                a = 15; 
                }
                else if(weather == "summer"){
-                a = 6;
+                a = 20;
                }
                else if(weather == "outhemn"){
-               a = 9;
+               a = 25;
                }
                else if(weather == "winther"){
-                a = 13;   
+                a = 30;   
                }
             if (this.life >= a) {
                 this.mul();
